@@ -1,0 +1,79 @@
+{{ define "main" }}
+  {{ $data := .Site.Data.page }}
+  <section class="hero" id="top">
+    <div class="container hero-grid">
+      <div class="hero-copy">
+        <p class="hero-kicker">{{ $data.hero.kicker }}</p>
+        <h1>{{ $data.hero.title }}</h1>
+        <p class="hero-description">{{ $data.hero.description }}</p>
+        <div class="hero-actions">
+          <a class="btn primary" href="{{ $data.hero.primary_cta.url }}">{{ $data.hero.primary_cta.text }}</a>
+          <a class="btn secondary" href="{{ $data.hero.secondary_cta.url }}" target="_blank" rel="noopener">{{ $data.hero.secondary_cta.text }}</a>
+        </div>
+      </div>
+      <div class="hero-card">
+        <div class="hero-card-inner">
+          <div class="hero-card-brand">
+            <img src="{{ "images/glycoverse-logo.png" | relURL }}" alt="Glycoverse logo" class="hero-logo">
+            <div class="hero-brand-copy">
+              <span class="hero-logo-title">{{ $data.hero.highlight.title }}</span>
+              <p class="hero-card-subtitle">{{ $data.hero.highlight.description }}</p>
+            </div>
+          </div>
+          <ul class="hero-card-list">
+            {{ range $data.hero.highlight.items }}
+            <li>{{ . }}</li>
+            {{ end }}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="feature-section" id="workflow">
+    <div class="container feature-grid">
+      {{ range $data.features }}
+      <article class="feature-card">
+        <h3>{{ .title }}</h3>
+        <p>{{ .description }}</p>
+      </article>
+      {{ end }}
+    </div>
+  </section>
+
+  <section class="packages" id="packages">
+    <div class="container">
+      <div class="section-intro">
+        <p class="section-kicker">Meet the packages</p>
+        <h2>A coordinated toolkit for glycan discovery</h2>
+        <p class="section-description">Modular building blocks cover the journey from raw glycomics measurements to annotated glycan structures.</p>
+      </div>
+      {{ range $section := $data.sections }}
+      <div class="package-section" id="{{ $section.id }}">
+        <div class="package-header">
+          <h3>{{ $section.title }}</h3>
+          <p>{{ $section.description }}</p>
+        </div>
+        <div class="package-grid">
+          {{ range $pkg := $section.packages }}
+          <article class="package-card">
+            <div class="package-card-header">
+              <img src="{{ printf "images/logos/%s.png" (lower $pkg.name) | relURL }}" alt="{{ $pkg.name }} logo">
+              <div>
+                <h4>{{ $pkg.name }}</h4>
+                <p class="package-tagline">{{ $pkg.tagline }}</p>
+              </div>
+            </div>
+            <p class="package-description">{{ $pkg.description }}</p>
+            <div class="package-actions">
+              <a class="btn tertiary" href="{{ $pkg.docs }}" target="_blank" rel="noopener">Docs</a>
+              <a class="btn link" href="{{ $pkg.github }}" target="_blank" rel="noopener">GitHub</a>
+            </div>
+          </article>
+          {{ end }}
+        </div>
+      </div>
+      {{ end }}
+    </div>
+  </section>
+{{ end }}

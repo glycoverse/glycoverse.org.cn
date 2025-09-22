@@ -1,0 +1,12 @@
+baseURL = "https://glycoverse.org.cn/"
+languageCode = "en-us"
+title = "Glycoverse"
+timezone = "UTC"
+defaultContentLanguage = "en"
+
+disableKinds = ["taxonomy", "term", "RSS", "sitemap"]
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
