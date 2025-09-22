@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.Language.Lang }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}</title>
+  <meta name="description" content="Glycoverse is a cohesive suite of R packages for glycomics data and glycan structure analysis.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ "css/style.css" | relURL }}">
+</head>
+<body>
+  <div class="page">
+    <header class="site-header">
+      <div class="container nav-bar">
+        <a href="{{ "/" | relURL }}" class="brand">
+          <img src="{{ "images/glycoverse-logo.png" | relURL }}" alt="Glycoverse logo" class="brand-logo">
+          <span class="brand-title">Glycoverse</span>
+        </a>
+        <nav class="primary-nav">
+          <a href="#packages">Packages</a>
+          <a href="#workflow">Workflow</a>
+          <a href="#resources">Resources</a>
+          <a class="nav-cta" href="https://github.com/glycoverse" target="_blank" rel="noopener">GitHub</a>
+        </nav>
+      </div>
+    </header>
+    <main>
+      {{ block "main" . }}{{ end }}
+    </main>
+    <footer class="site-footer" id="resources">
+      <div class="container footer-content">
+        <div>
+          <h2>Stay connected</h2>
+          <p>Follow the development of the Glycoverse ecosystem and contribute to open glycomics tooling.</p>
+        </div>
+        <div class="footer-links">
+          <a href="https://github.com/glycoverse" target="_blank" rel="noopener">GitHub</a>
+          <a href="mailto:info@glycoverse.org">Contact</a>
+          <a href="https://github.com/glycoverse/glycoverse" target="_blank" rel="noopener">Workflow guide</a>
+        </div>
+      </div>
+      <div class="container footer-meta">
+        <span>&copy; {{ now.Year }} Glycoverse contributors. Released under an open-source license.</span>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>
