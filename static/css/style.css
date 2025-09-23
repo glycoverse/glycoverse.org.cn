@@ -482,12 +482,9 @@ body {
 }
 
 .package-card-header img {
-  width: 64px;
-  height: 64px;
-  border-radius: 16px;
+  width: 72px;
+  height: 72px;
   object-fit: contain;
-  background: rgba(112, 98, 216, 0.08);
-  padding: 10px;
 }
 
 .package-card-header h4 {
