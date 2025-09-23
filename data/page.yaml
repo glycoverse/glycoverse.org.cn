@@ -1,7 +1,7 @@
 hero:
-  kicker: "The Glycoverse Toolkit"
+  kicker: "The Glycoverse Ecosystem"
   title: "Build glycan knowledge with a cohesive R ecosystem"
-  description: "Use a coordinated family of R packages to move from raw glycomics data to glycan-aware insights, faster than ever before."
+  description: "Use a coordinated family of R packages to move from raw glyco-omics data to glycan-aware insights, faster than ever before."
   primary_cta:
     text: "Explore packages"
     url: "#packages"
@@ -10,7 +10,7 @@ hero:
     url: "https://github.com/glycoverse"
   highlight:
     title: "glycoverse"
-    description: "A unified approach to glycomics workflows"
+    description: "A unified approach to glyco-omics workflows"
     items:
       - "Shared data contracts"
       - "Composable analysis steps"
@@ -20,8 +20,8 @@ features:
     description: "Every package speaks the same tidy grammar, letting you pass glycan-rich data seamlessly through the pipeline."
   - title: "Structure aware"
     description: "Glycan topology, motifs, and enzymatic context stay connected to your quantitative measurements."
-  - title: "Communication ready"
-    description: "Tell the full glycan story with polished reports, visuals, and links back to FAIR data sources."
+  - title: "Pluggable components"
+    description: "Packages can be used together or independently, suitable for any glyco-omics workflow."
 sections:
   - id: "omics"
     title: "Omics Data Analysis"
@@ -38,8 +38,8 @@ sections:
         docs: "https://glycoverse.github.io/glyread/"
         github: "https://github.com/glycoverse/glyread"
       - name: "glyclean"
-        tagline: "Standardize observations"
-        description: "Resolve identifiers, align nomenclature, and quality control raw glycan calls for trustworthy comparisons."
+        tagline: "Automatic preprocessing"
+        description: "Automate normalization, missing value handling, and batch correction with intelligent pipelines."
         docs: "https://glycoverse.github.io/glyclean/"
         github: "https://github.com/glycoverse/glyclean"
       - name: "glystats"
@@ -49,7 +49,7 @@ sections:
         github: "https://github.com/glycoverse/glystats"
       - name: "glyvis"
         tagline: "Communicate insights"
-        description: "Create publication-ready figures and dashboards that keep glycans at the center of the story."
+        description: "Fast exploratory visualizations that keep glycans at the center of the story."
         docs: "https://glycoverse.github.io/glyvis/"
         github: "https://github.com/glycoverse/glyvis"
   - id: "structure"
@@ -58,7 +58,7 @@ sections:
     packages:
       - name: "glyrepr"
         tagline: "Consistent representations"
-        description: "Build and exchange machine-readable glycan structures that travel across databases and workflows."
+        description: "Build and exchange machine-readable glycan structures that travel across algorithms and workflows."
         docs: "https://glycoverse.github.io/glyrepr/"
         github: "https://github.com/glycoverse/glyrepr"
       - name: "glyparse"
@@ -73,7 +73,7 @@ sections:
         github: "https://github.com/glycoverse/glymotif"
       - name: "glydet"
         tagline: "Detect glycan patterns"
-        description: "Apply machine learning to classify glycans and predict functional roles across experimental contexts."
+        description: "Calculate site-specific glycan derived traits with flexible customization."
         docs: "https://glycoverse.github.io/glydet/"
         github: "https://github.com/glycoverse/glydet"
       - name: "glyenzy"
