@@ -41,6 +41,71 @@
     </div>
   </section>
 
+  <section class="snippets" id="snippets">
+    <div class="container">
+      <div class="section-intro">
+        <p class="section-kicker">Explore the workflow</p>
+        <h2>End-to-end code snippets</h2>
+        <p class="section-description">Swipe through runnable examples that mirror the glyco-omics journey from raw measurements to pathway reconstruction.</p>
+      </div>
+      <div class="snippet-carousel" data-snippet-carousel>
+        <button class="carousel-arrow prev" type="button" aria-label="Scroll snippets backward">
+          <span aria-hidden="true">&#8592;</span>
+        </button>
+        <div class="snippet-track" role="region" aria-label="Glycoverse workflow code snippets">
+          <article class="snippet-card">
+            <h3>Data Loading and Preprocessing</h3>
+            {{ highlight "# Support mainstream software\nexp <- read_pglyco3(\"results.txt\")\n\n# Automatic preprocessing\nclean_exp <- auto_clean(exp)" "r" "" }}
+          </article>
+          <article class="snippet-card">
+            <h3>Differential Expression Analysis</h3>
+            {{ highlight "# ANOVA\ngly_anova(clean_exp)\n\n# Limma\ngly_limma(clean_exp)" "r" "" }}
+          </article>
+          <article class="snippet-card">
+            <h3>GO Enrichment</h3>
+            {{ highlight "# Unified function API\ngo_res <- gly_enrich_go(clean_exp)\n\n# Automatic visualization\nautoplot(go_res)" "r" "" }}
+          </article>
+          <article class="snippet-card">
+            <h3>Motif Quantification and DEA</h3>
+            {{ highlight "# Advanced motif analysis\nmotif_exp <- quantify_motifs(clean_exp, \"Lewis X\")\n\n# Ready for statistical analysis\ngly_kruskal(motif_exp)" "r" "" }}
+          </article>
+          <article class="snippet-card">
+            <h3>Derived Traits and DEA</h3>
+            {{ highlight "# Site-specific derived traits\ntrait_exp <- derive_traits(clean_exp)\n\n# Again, a smooth pipeline\ngly_kruskal(trait_exp)" "r" "" }}
+          </article>
+          <article class="snippet-card">
+            <h3>Re-build Biosynthesis Pathway</h3>
+            {{ highlight "# Any glycan structure string\nglycan <- \"Gal(b1-3)[GlcNAc(b1-6)]GalNAc(a1-\"\n\n# Get biosynthesis insights\nrebuild_biosynthesis(glycan)" "r" "" }}
+          </article>
+        </div>
+        <button class="carousel-arrow next" type="button" aria-label="Scroll snippets forward">
+          <span aria-hidden="true">&#8594;</span>
+        </button>
+      </div>
+    </div>
+    <script>
+      (function () {
+        var carousels = document.querySelectorAll('[data-snippet-carousel]');
+        if (!carousels.length) return;
+        carousels.forEach(function (carousel) {
+          var track = carousel.querySelector('.snippet-track');
+          var prev = carousel.querySelector('.carousel-arrow.prev');
+          var next = carousel.querySelector('.carousel-arrow.next');
+          if (!track || !prev || !next) return;
+          var scrollByAmount = function () {
+            return track.clientWidth * 0.9;
+          };
+          prev.addEventListener('click', function () {
+            track.scrollBy({ left: -scrollByAmount(), behavior: 'smooth' });
+          });
+          next.addEventListener('click', function () {
+            track.scrollBy({ left: scrollByAmount(), behavior: 'smooth' });
+          });
+        });
+      })();
+    </script>
+  </section>
+
   <section class="packages" id="packages">
     <div class="container">
       <div class="section-intro">
