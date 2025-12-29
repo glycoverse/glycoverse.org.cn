@@ -1,34 +1,21 @@
 {{ define "main" }}
   {{ $data := .Site.Data.page }}
   <section class="hero" id="top">
-    <div class="container hero-grid">
+    {{ partial "galaxy.html" . }}
+    <div class="container hero-grid" style="position: relative; z-index: 1;">
       <div class="hero-copy">
         <p class="hero-kicker">{{ $data.hero.kicker }}</p>
-        <h1>{{ $data.hero.title }}</h1>
+        <h1><span class="text-gradient">{{ $data.hero.title }}</span></h1>
         <p class="hero-description">{{ $data.hero.description }}</p>
         <div class="hero-actions">
           <a class="btn primary" href="{{ $data.hero.primary_cta.url }}">{{ $data.hero.primary_cta.text }}</a>
           <a class="btn secondary" href="{{ $data.hero.secondary_cta.url }}" target="_blank" rel="noopener">{{ $data.hero.secondary_cta.text }}</a>
         </div>
       </div>
-      <div class="hero-card">
-        <div class="hero-card-inner">
-          <div class="hero-card-brand">
-            <img src="{{ "images/glycoverse-logo.png" | relURL }}" alt="Glycoverse logo" class="hero-logo">
-            <div class="hero-brand-copy">
-              <span class="hero-logo-title">{{ $data.hero.highlight.title }}</span>
-              <p class="hero-card-subtitle">{{ $data.hero.highlight.description }}</p>
-            </div>
-          </div>
-          <ul class="hero-card-list">
-            {{ range $data.hero.highlight.items }}
-            <li>{{ . }}</li>
-            {{ end }}
-          </ul>
-        </div>
-      </div>
+      <div class="galaxy-placeholder"></div>
     </div>
   </section>
+
 
   <section class="feature-section" id="workflow">
     <div class="container feature-grid">
