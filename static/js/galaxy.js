@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Configuration
   const GLYCAN_COUNT = 40;
-  const STAR_COUNT = 150;
+  const STAR_COUNT = 450;
   const COLORS = ['#5eead4', '#a855f7', '#3b82f6', '#f472b6']; // Theme colors: Cyan, Purple, Blue, Pink
 
   // Resize
