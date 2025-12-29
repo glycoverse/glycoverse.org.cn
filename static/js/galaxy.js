@@ -150,12 +150,38 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       drawNode(node, x, y, angle, length, scale) {
-          // Draw current node
           const size = 6 * this.sizeScale * scale;
-          
+          const branchAngle = Math.PI / 4; // 45 degrees
+          const childCount = node.children.length;
+
+          // Draw connections and children FIRST
+          node.children.forEach((child, index) => {
+              // Calculate branch direction
+              let currentAngle = angle;
+              if (childCount > 1) {
+                   // Spread branches
+                   currentAngle = angle + (index === 0 ? -branchAngle : branchAngle);
+              }
+              
+              const nx = x + Math.cos(currentAngle) * length;
+              const ny = y + Math.sin(currentAngle) * length;
+
+              // Line - Reset context for line drawing
+              ctx.lineWidth = 2 * scale;
+              ctx.strokeStyle = node.color; 
+              ctx.shadowBlur = 0; 
+              
+              ctx.beginPath();
+              ctx.moveTo(x, y);
+              ctx.lineTo(nx, ny);
+              ctx.stroke();
+
+              // Recursive call
+              this.drawNode(child, nx, ny, currentAngle, length * 0.8, scale);
+          });
+
+          // Draw current node LAST
           ctx.fillStyle = node.color;
-          ctx.strokeStyle = node.color;
-          ctx.lineWidth = 2 * scale;
           
           // Glow
           ctx.shadowBlur = 10 * scale;
@@ -168,33 +194,6 @@ document.addEventListener('DOMContentLoaded', () => {
           } else {
               ctx.fillRect(x - size, y - size, size * 2, size * 2);
           }
-          
-          ctx.shadowBlur = 0; // Reset glow for lines
-
-          // Draw children
-          const branchAngle = Math.PI / 4; // 45 degrees
-          const childCount = node.children.length;
-          
-          node.children.forEach((child, index) => {
-              // Calculate branch direction
-              let currentAngle = angle;
-              if (childCount > 1) {
-                   // Spread branches
-                   currentAngle = angle + (index === 0 ? -branchAngle : branchAngle);
-              }
-              
-              const nx = x + Math.cos(currentAngle) * length;
-              const ny = y + Math.sin(currentAngle) * length;
-
-              // Line
-              ctx.beginPath();
-              ctx.moveTo(x, y);
-              ctx.lineTo(nx, ny);
-              ctx.stroke();
-
-              // Recursive call
-              this.drawNode(child, nx, ny, currentAngle, length * 0.8, scale);
-          });
       }
   }
 
