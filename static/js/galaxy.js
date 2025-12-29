@@ -244,10 +244,14 @@ document.addEventListener('DOMContentLoaded', () => {
       ctx.fillStyle = radial;
       ctx.fillRect(0, 0, width, height);
 
+      // Update positions
+      glycans.forEach(g => g.update());
+
       // Draw Glycans (sort by Z for depth buffering basic)
-      glycans.sort((a, b) => a.z - b.z); // Draw far ones first
+      // Sort High Z (far) to Low Z (close)
+      glycans.sort((a, b) => b.z - a.z); 
+
       glycans.forEach(g => {
-          g.update();
           g.draw();
       });
 
