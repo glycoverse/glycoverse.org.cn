@@ -24,6 +24,36 @@ document.addEventListener('DOMContentLoaded', () => {
   window.addEventListener('resize', resize);
   resize();
 
+  // Create frosted glass overlay for text readability
+  function createOverlay() {
+      if (document.getElementById('galaxy-overlay')) return;
+      
+      const overlay = document.createElement('div');
+      overlay.id = 'galaxy-overlay';
+      overlay.style.position = 'absolute';
+      overlay.style.top = '0';
+      overlay.style.left = '0';
+      overlay.style.width = '60%'; // Cover the left side
+      overlay.style.height = '100%';
+      overlay.style.zIndex = '1'; // Above canvas (0), below content (usually >1 or static)
+      overlay.style.pointerEvents = 'none';
+      
+      // Glass effect
+      overlay.style.backdropFilter = 'blur(8px)';
+      overlay.style.webkitBackdropFilter = 'blur(8px)';
+      
+      // Mask to fade out the blur to the right
+      const mask = 'linear-gradient(to right, black 0%, black 40%, transparent 100%)';
+      overlay.style.maskImage = mask;
+      overlay.style.webkitMaskImage = mask;
+      
+      // Insert after canvas
+      if (canvas.parentNode) {
+          canvas.parentNode.insertBefore(overlay, canvas.nextSibling);
+      }
+  }
+  createOverlay();
+
   // Mouse Move
   window.addEventListener('mousemove', (e) => {
       // Normalize mouse position -1 to 1
