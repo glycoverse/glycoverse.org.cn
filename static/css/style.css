@@ -464,6 +464,12 @@ body {
   margin: 0 0 8px;
 }
 
+.package-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
 .package-card {
   background: var(--bg-surface);
   border: 1px solid var(--border-color);
@@ -471,8 +477,21 @@ body {
   padding: 24px;
   display: flex;
   flex-direction: column;
-  height: 100%;
+  min-height: 200px;
   transition: all 0.2s;
+}
+
+/* Responsive breakpoints for package grid */
+@media (max-width: 1024px) {
+  .package-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .package-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 .package-card:hover {
