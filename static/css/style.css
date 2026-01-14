@@ -618,29 +618,11 @@ body {
   width: 100%;
   height: 100%;
   z-index: 0;
-  pointer-events: none; /* Allow interaction with elements above */
+  pointer-events: none;
+  will-change: transform;
 }
 
 /* Galaxy Placeholder */
 .galaxy-placeholder {
   height: 400px;
-  /* Keeps the grid structure but is transparent */
-}
-
-
-/* Galaxy Canvas */
-#galaxy-canvas {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 0;
-  pointer-events: none; /* Allow interaction with elements above */
-}
-
-/* Galaxy Placeholder */
-.galaxy-placeholder {
-  height: 400px;
-  /* Keeps the grid structure but is transparent */
 }
