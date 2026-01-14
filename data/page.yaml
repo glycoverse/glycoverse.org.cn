@@ -33,7 +33,7 @@ sections:
         docs: "https://glycoverse.github.io/glycoverse/"
         github: "https://github.com/glycoverse/glycoverse"
       - name: "glysmith"
-        tagline: "Forge analysis blueprints"
+        tagline: "Out-of-box analytical pipelines"
         description: "High-level workflows that integrate cleaning, statistics, and visualization into pipelines."
         docs: "https://glycoverse.github.io/glysmith/"
         github: "https://github.com/glycoverse/glysmith"
