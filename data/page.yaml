@@ -15,13 +15,6 @@ hero:
       - "Shared data contracts"
       - "Composable analysis steps"
       - "Open documentation"
-features:
-  - title: "Unified data model"
-    description: "Validated GlycomicSE and GlycoproteomicSE containers move cleanly from import to analysis."
-  - title: "Structure aware"
-    description: "Topology, motifs, cartoons, and enzymatic context remain connected to quantitative measurements."
-  - title: "Pluggable components"
-    description: "Use a complete workflow or choose focused packages without giving up interoperability."
 sections:
   - id: "entrance"
     title: "Entrance Packages"
