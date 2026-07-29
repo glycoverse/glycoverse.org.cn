@@ -80,7 +80,7 @@
             {{ highlight "library(glyparse)\nlibrary(glymotif)\n\n# auto_parse() recognizes common glycan text formats.\nglycan <- auto_parse(\n  \"Gal(b1-3)GlcNAc(b1-3)Gal(b1-3)GalNAc(a1-\"\n)\n\n# Query a curated motif by its biological name.\nhave_motif(glycan, \"O-Glycan core 1\")" "r" "" }}
           </div>
           <div class="editor-panel has-result" id="snippet-visualize" role="tabpanel" aria-labelledby="tab-visualize" hidden>
-            {{ highlight "library(ggplot2)\nlibrary(glydraw)\n\n# Add glycan cartoons directly to a ggplot layer.\nggplot(plot_data, aes(glycan, value)) +\n  geom_col() +\n  geom_glycan(aes(structure = glycan))" "r" "" }}
+            {{ highlight "library(ggplot2)\nlibrary(glydraw)\nlibrary(tibble)\n\nplot_data <- tibble(\n  glycan = c(\n    \"Gal(b1-3)GalNAc(a1-\",\n    \"Gal(b1-3)[GlcNAc(b1-6)]GalNAc(a1-\"\n  ),\n  value = c(1, 2)\n)\n\nggplot(plot_data, aes(glycan, value)) +\n  geom_col(fill = \"grey70\") +\n  geom_glycan(aes(structure = glycan)) +\n  theme_classic()" "r" "" }}
             <figure class="code-result">
               <figcaption>Result</figcaption>
               <img src="{{ "images/glycan-barplot.png" | relURL }}" alt="Bar plot with SNFG glycan cartoons positioned above the bars">
