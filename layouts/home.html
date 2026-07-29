@@ -44,7 +44,7 @@
           </button>
           <button class="code-nav-item" type="button" role="tab" aria-selected="false" aria-controls="snippet-analyze" id="tab-analyze" data-file="02-analyze.R" tabindex="-1">
             <span class="code-nav-index">02</span>
-            <span><strong>Clean and model</strong><small>glyclean · glystats</small></span>
+            <span><strong>Clean and model</strong><small>glyclean · glystats · glyvis</small></span>
           </button>
           <button class="code-nav-item" type="button" role="tab" aria-selected="false" aria-controls="snippet-parse" id="tab-parse" data-file="03-parse.R" tabindex="-1">
             <span class="code-nav-index">03</span>
@@ -74,7 +74,7 @@
             {{ highlight "library(glyread)\n\n# Read pGlyco3 + pGlycoQuant output directly into\n# a validated glyexp::GlycoproteomicSE container.\nexp <- read_pglyco3_pglycoquant(\n  \"Quant.spectra.list\",\n  sample_info = \"sample_info.csv\",\n  quant_method = \"label-free\",\n  glycan_type = \"N\"\n)\n\nexp" "r" "" }}
           </div>
           <div class="editor-panel" id="snippet-analyze" role="tabpanel" aria-labelledby="tab-analyze" hidden>
-            {{ highlight "library(glycoverse)\n\n# Choose suitable preprocessing steps automatically.\nclean_exp <- auto_clean(real_experiment)\n\n# The same GlycoproteomicSE moves straight into models.\ndea_res <- gly_limma(clean_exp)\npca_res <- gly_pca(clean_exp)" "r" "" }}
+            {{ highlight "library(glycoverse)\n\n# Choose suitable preprocessing steps automatically.\nclean_exp <- auto_clean(real_experiment)\n\n# The same GlycoproteomicSE moves straight into models.\ndea_res <- gly_limma(clean_exp)\npca_res <- gly_pca(clean_exp)\n\n# Turn analysis results into publication-ready views.\nplot_volcano(dea_res)\nplot_pca(pca_res)" "r" "" }}
           </div>
           <div class="editor-panel" id="snippet-parse" role="tabpanel" aria-labelledby="tab-parse" hidden>
             {{ highlight "library(glyparse)\nlibrary(glymotif)\n\n# auto_parse() recognizes common glycan text formats.\nglycan <- auto_parse(\n  \"Gal(b1-3)GlcNAc(b1-3)Gal(b1-3)GalNAc(a1-\"\n)\n\n# Query a curated motif by its biological name.\nhave_motif(glycan, \"O-Glycan core 1\")" "r" "" }}
