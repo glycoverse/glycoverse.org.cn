@@ -1,26 +1,38 @@
 {{ define "main" }}
   {{ $data := .Site.Data.page }}
   <section class="hero" id="top">
-    {{ partial "galaxy.html" . }}
-    <div class="container hero-grid" style="position: relative; z-index: 1;">
-      <div class="hero-copy">
-        <p class="hero-kicker">{{ $data.hero.kicker }}</p>
-        <h1><span class="text-gradient">{{ $data.hero.title }}</span></h1>
-        <p class="hero-description">{{ $data.hero.description }}</p>
-        <div class="hero-actions">
-          <a class="btn primary" href="{{ $data.hero.primary_cta.url }}">{{ $data.hero.primary_cta.text }}</a>
-          <a class="btn secondary" href="{{ $data.hero.secondary_cta.url }}" target="_blank" rel="noopener">{{ $data.hero.secondary_cta.text }}</a>
+    <div class="container hero-inner">
+      <p class="hero-kicker">{{ $data.hero.kicker }}</p>
+      <h1>{{ $data.hero.title }}</h1>
+      <p class="hero-description">{{ $data.hero.description }}</p>
+      <div class="hero-actions">
+        <a class="btn primary" href="{{ $data.hero.primary_cta.url }}">{{ $data.hero.primary_cta.text }}</a>
+        <a class="btn secondary" href="{{ $data.hero.secondary_cta.url }}" target="_blank" rel="noopener">{{ $data.hero.secondary_cta.text }} <span aria-hidden="true">↗</span></a>
+      </div>
+      <div class="workflow-ribbon" aria-label="Glycoverse workflow">
+        <div class="workflow-step">
+          <span class="workflow-number">01</span>
+          <div><strong>Read</strong><span>Experimental data</span></div>
+        </div>
+        <span class="workflow-arrow" aria-hidden="true">→</span>
+        <div class="workflow-step">
+          <span class="workflow-number">02</span>
+          <div><strong>Understand</strong><span>Glycan structure</span></div>
+        </div>
+        <span class="workflow-arrow" aria-hidden="true">→</span>
+        <div class="workflow-step">
+          <span class="workflow-number">03</span>
+          <div><strong>Discover</strong><span>Biological meaning</span></div>
         </div>
       </div>
-      <div class="galaxy-placeholder"></div>
     </div>
   </section>
-
 
   <section class="feature-section" id="workflow">
     <div class="container feature-grid">
       {{ range $data.features }}
       <article class="feature-card">
+        <span class="feature-mark" aria-hidden="true"></span>
         <h3>{{ .title }}</h3>
         <p>{{ .description }}</p>
       </article>
@@ -31,95 +43,95 @@
   <section class="snippets" id="snippets">
     <div class="container">
       <div class="section-intro">
-        <p class="section-kicker">Explore the workflow</p>
-        <h2>End-to-end code snippets</h2>
-        <p class="section-description">Swipe through runnable examples that mirror the glyco-omics journey from raw measurements to pathway reconstruction.</p>
+        <p class="section-kicker">Explore the release API</p>
+        <h2>One ecosystem. Every step.</h2>
+        <p class="section-description">Choose a task to see how released Glycoverse packages turn complex glyco-omics work into readable R code.</p>
       </div>
-      <div class="snippet-carousel" data-snippet-carousel>
-        <button class="carousel-arrow prev" type="button" aria-label="Scroll snippets backward">
-          <span aria-hidden="true">&#8592;</span>
-        </button>
-        <div class="snippet-track" role="region" aria-label="Glycoverse workflow code snippets">
-          <article class="snippet-card">
-            <h3>Data Loading and Preprocessing</h3>
-            {{ highlight "# Support mainstream software\nexp <- read_pglyco3(\"results.txt\")\n\n# Automatic preprocessing\nclean_exp <- auto_clean(exp)" "r" "" }}
-          </article>
-          <article class="snippet-card">
-            <h3>Differential Expression Analysis</h3>
-            {{ highlight "# ANOVA\ngly_anova(clean_exp)\n\n# Limma\ngly_limma(clean_exp)" "r" "" }}
-          </article>
-          <article class="snippet-card">
-            <h3>GO Enrichment</h3>
-            {{ highlight "# Unified function API\ngo_res <- gly_enrich_go(clean_exp)\n\n# Automatic visualization\nautoplot(go_res)" "r" "" }}
-          </article>
-          <article class="snippet-card">
-            <h3>Motif Quantification and DEA</h3>
-            {{ highlight "# Advanced motif analysis\nmotif_exp <- quantify_motifs(clean_exp, \"Lewis X\")\n\n# Ready for statistical analysis\ngly_kruskal(motif_exp)" "r" "" }}
-          </article>
-          <article class="snippet-card">
-            <h3>Derived Traits and DEA</h3>
-            {{ highlight "# Site-specific derived traits\ntrait_exp <- derive_traits(clean_exp)\n\n# Again, a smooth pipeline\ngly_kruskal(trait_exp)" "r" "" }}
-          </article>
-          <article class="snippet-card">
-            <h3>Re-build Biosynthesis Pathway</h3>
-            {{ highlight "# Any glycan structure string\nglycan <- \"Gal(b1-3)[GlcNAc(b1-6)]GalNAc(a1-\"\n\n# Get biosynthesis insights\nrebuild_biosynthesis(glycan)" "r" "" }}
-          </article>
+
+      <div class="code-workbench" data-code-workbench>
+        <div class="code-nav" role="tablist" aria-label="Glycoverse code examples" aria-orientation="vertical">
+          <button class="code-nav-item is-active" type="button" role="tab" aria-selected="true" aria-controls="snippet-import" id="tab-import" data-file="01-import.R">
+            <span class="code-nav-index">01</span>
+            <span><strong>Import an experiment</strong><small>glyread · glyexp</small></span>
+          </button>
+          <button class="code-nav-item" type="button" role="tab" aria-selected="false" aria-controls="snippet-analyze" id="tab-analyze" data-file="02-analyze.R" tabindex="-1">
+            <span class="code-nav-index">02</span>
+            <span><strong>Clean and model</strong><small>glyclean · glystats</small></span>
+          </button>
+          <button class="code-nav-item" type="button" role="tab" aria-selected="false" aria-controls="snippet-parse" id="tab-parse" data-file="03-parse.R" tabindex="-1">
+            <span class="code-nav-index">03</span>
+            <span><strong>Translate glycan text</strong><small>glyparse · glymotif</small></span>
+          </button>
+          <button class="code-nav-item" type="button" role="tab" aria-selected="false" aria-controls="snippet-visualize" id="tab-visualize" data-file="04-visualize.R" tabindex="-1">
+            <span class="code-nav-index">04</span>
+            <span><strong>Plot with glycans</strong><small>glydraw · ggplot2</small></span>
+          </button>
+          <button class="code-nav-item" type="button" role="tab" aria-selected="false" aria-controls="snippet-enrich" id="tab-enrich" data-file="05-enrich.R" tabindex="-1">
+            <span class="code-nav-index">05</span>
+            <span><strong>Find biological meaning</strong><small>glyfun · glydet</small></span>
+          </button>
+          <button class="code-nav-item" type="button" role="tab" aria-selected="false" aria-controls="snippet-enzyme" id="tab-enzyme" data-file="06-enzymes.R" tabindex="-1">
+            <span class="code-nav-index">06</span>
+            <span><strong>Trace biosynthesis</strong><small>glyenzy · glyrepr</small></span>
+          </button>
         </div>
-        <button class="carousel-arrow next" type="button" aria-label="Scroll snippets forward">
-          <span aria-hidden="true">&#8594;</span>
-        </button>
+
+        <div class="editor" aria-live="polite">
+          <div class="editor-bar">
+            <div class="window-controls" aria-hidden="true"><span></span><span></span><span></span></div>
+            <span class="editor-filename" data-editor-filename>01-import.R</span>
+            <span class="release-badge">release API</span>
+          </div>
+          <div class="editor-panel" id="snippet-import" role="tabpanel" aria-labelledby="tab-import">
+            {{ highlight "library(glyread)\n\n# Read pGlyco3 + pGlycoQuant output directly into\n# a validated glyexp::GlycoproteomicSE container.\nexp <- read_pglyco3_pglycoquant(\n  \"Quant.spectra.list\",\n  sample_info = \"sample_info.csv\",\n  quant_method = \"label-free\",\n  glycan_type = \"N\"\n)\n\nexp" "r" "" }}
+          </div>
+          <div class="editor-panel" id="snippet-analyze" role="tabpanel" aria-labelledby="tab-analyze" hidden>
+            {{ highlight "library(glycoverse)\n\n# Choose suitable preprocessing steps automatically.\nclean_exp <- auto_clean(real_experiment)\n\n# The same GlycoproteomicSE moves straight into models.\ndea_res <- gly_limma(clean_exp)\npca_res <- gly_pca(clean_exp)" "r" "" }}
+          </div>
+          <div class="editor-panel" id="snippet-parse" role="tabpanel" aria-labelledby="tab-parse" hidden>
+            {{ highlight "library(glyparse)\nlibrary(glymotif)\n\n# auto_parse() recognizes common glycan text formats.\nglycan <- auto_parse(\n  \"Gal(b1-3)GlcNAc(b1-3)Gal(b1-3)GalNAc(a1-\"\n)\n\n# Query a curated motif by its biological name.\nhave_motif(glycan, \"O-Glycan core 1\")" "r" "" }}
+          </div>
+          <div class="editor-panel" id="snippet-visualize" role="tabpanel" aria-labelledby="tab-visualize" hidden>
+            {{ highlight "library(ggplot2)\nlibrary(glydraw)\n\n# Glycan cartoons become native axis labels.\nggplot(plot_data, aes(branch, sample)) +\n  geom_tile(aes(fill = z_score)) +\n  scale_x_glycan(\n    position = \"top\",\n    size = 0.2,\n    show_linkage = FALSE,\n    red_end = \"~\"\n  ) +\n  coord_equal()" "r" "" }}
+          </div>
+          <div class="editor-panel" id="snippet-enrich" role="tabpanel" aria-labelledby="tab-enrich" hidden>
+            {{ highlight "library(glycoverse)\nlibrary(glyfun)\n\nexp <- auto_clean(real_experiment)\n\n# Conventional GO enrichment for dysregulated proteins.\ndea_res <- gly_limma(exp)\ngo_res <- enrich_ora_go(dea_res)\n\n# Or ask a glycan-centric question with derived traits.\ntrait_exp <- derive_traits(exp)\ntrait_dea <- gly_limma(trait_exp)\nglycan_go <- enrich_gc_ora_go(trait_dea)" "r" "" }}
+          </div>
+          <div class="editor-panel" id="snippet-enzyme" role="tabpanel" aria-labelledby="tab-enzyme" hidden>
+            {{ highlight "library(glyenzy)\n\nglycan <- paste0(\n  \"Gal(b1-4)GlcNAc(b1-6)\",\n  \"[Gal(b1-3)]GalNAc(a1-\"\n)\n\n# Find enzymes in its biosynthesis...\nfind_enzyme(glycan)\n\n# ...or predict products made by one enzyme.\napply_enzyme(glycan, \"ST3GAL1\")" "r" "" }}
+          </div>
+        </div>
       </div>
     </div>
-    <script>
-      (function () {
-        var carousels = document.querySelectorAll('[data-snippet-carousel]');
-        if (!carousels.length) return;
-        carousels.forEach(function (carousel) {
-          var track = carousel.querySelector('.snippet-track');
-          var prev = carousel.querySelector('.carousel-arrow.prev');
-          var next = carousel.querySelector('.carousel-arrow.next');
-          if (!track || !prev || !next) return;
-          var scrollByAmount = function () {
-            return track.clientWidth * 0.9;
-          };
-          prev.addEventListener('click', function () {
-            track.scrollBy({ left: -scrollByAmount(), behavior: 'smooth' });
-          });
-          next.addEventListener('click', function () {
-            track.scrollBy({ left: scrollByAmount(), behavior: 'smooth' });
-          });
-        });
-      })();
-    </script>
   </section>
 
   <section class="packages" id="packages">
     <div class="container">
       <div class="section-intro">
         <p class="section-kicker">Meet the packages</p>
-        <h2>A coordinated toolkit for glycan discovery</h2>
-        <p class="section-description">Modular building blocks cover the journey from raw glyco-omics measurements to annotated glycan structures.</p>
+        <h2>Designed to work together.</h2>
+        <p class="section-description">Use the whole ecosystem or compose only the focused tools your analysis needs.</p>
       </div>
       {{ range $section := $data.sections }}
       <div class="package-section" id="{{ $section.id }}">
         <div class="package-header">
-          <h3>{{ $section.title }}</h3>
+          <p class="package-label">{{ $section.title }}</p>
           <p>{{ $section.description }}</p>
         </div>
         <div class="package-grid">
           {{ range $pkg := $section.packages }}
           <article class="package-card">
             <div class="package-card-header">
-              <img src="{{ printf "images/logos/%s.png" (lower $pkg.name) | relURL }}" alt="{{ $pkg.name }} logo">
+              <img src="{{ with $pkg.logo }}{{ . }}{{ else }}{{ printf "images/logos/%s.png" (lower $pkg.name) | relURL }}{{ end }}" alt="{{ $pkg.name }} logo" loading="lazy">
               <div>
-                <h4>{{ $pkg.name }}</h4>
+                <h3>{{ $pkg.name }}</h3>
                 <p class="package-tagline">{{ $pkg.tagline }}</p>
               </div>
             </div>
             <p class="package-description">{{ $pkg.description }}</p>
             <div class="package-actions">
-              <a class="btn tertiary" href="{{ $pkg.docs }}" target="_blank" rel="noopener">Docs</a>
-              <a class="btn link" href="{{ $pkg.github }}" target="_blank" rel="noopener">GitHub</a>
+              <a href="{{ $pkg.docs }}" target="_blank" rel="noopener">Docs <span aria-hidden="true">↗</span></a>
+              <a href="{{ $pkg.github }}" target="_blank" rel="noopener">GitHub <span aria-hidden="true">↗</span></a>
             </div>
           </article>
           {{ end }}

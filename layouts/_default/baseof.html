@@ -5,10 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}</title>
   <meta name="description" content="Glycoverse is a cohesive suite of R packages for glyco-omics data and glycan structure analysis.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="{{ "css/style.css" | relURL }}">
+  <script src="{{ "js/site.js" | relURL }}" defer></script>
 </head>
 <body>
   <div class="page">
@@ -19,7 +17,7 @@
         </a>
         <nav class="primary-nav">
           <a href="#packages">Packages</a>
-          <a href="#workflow">Workflow</a>
+          <a href="#snippets">Examples</a>
           <a href="#resources">Resources</a>
           <a class="nav-cta" href="https://github.com/glycoverse" target="_blank" rel="noopener">GitHub</a>
         </nav>
