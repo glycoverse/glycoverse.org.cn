@@ -7,12 +7,10 @@
   <meta name="description" content="Glycoverse is a cohesive suite of R packages for glyco-omics data and glycan structure analysis.">
   <link rel="stylesheet" href="{{ "css/style.css" | relURL }}">
   <script src="{{ "js/site.js" | relURL }}" defer></script>
-  <!-- Privacy-friendly analytics by Plausible -->
-  <script async src="https://plausible.io/js/pa-5PewKQK-ONQ2EgLq80iJp.js"></script>
-  <script>
-    window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
-    plausible.init()
-  </script>
+  {{ if hugo.IsProduction }}
+  <!-- Privacy-friendly analytics, limited to the production domain. -->
+  <script defer src="https://cloud.umami.is/script.js" data-website-id="fecae6f7-5179-45c3-817e-f74b6cbae4f4" data-domains="glycoverse.org.cn"></script>
+  {{ end }}
 </head>
 <body>
   <div class="page">
