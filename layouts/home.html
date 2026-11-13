@@ -2,28 +2,20 @@
   {{ $data := .Site.Data.page }}
   <section class="hero" id="top">
     <div class="container hero-inner">
-      <p class="hero-kicker">{{ $data.hero.kicker }}</p>
-      <h1><span class="snfg-word" aria-label="Glyco"><span aria-hidden="true">G</span><span aria-hidden="true">l</span><span aria-hidden="true">y</span><span aria-hidden="true">c</span><span aria-hidden="true">o</span></span>-omics, thoughtfully connected.</h1>
-      <p class="hero-description">{{ $data.hero.description }}</p>
-      <div class="hero-actions">
-        <a class="btn primary" href="{{ $data.hero.primary_cta.url }}">{{ $data.hero.primary_cta.text }}</a>
-        <a class="btn secondary" href="{{ $data.hero.secondary_cta.url }}" target="_blank" rel="noopener">{{ $data.hero.secondary_cta.text }} <span aria-hidden="true">↗</span></a>
+      <div class="hero-copy">
+        <p class="hero-kicker">{{ $data.hero.kicker }}</p>
+        <h1><span class="snfg-word" aria-label="Glyco"><span aria-hidden="true">G</span><span aria-hidden="true">l</span><span aria-hidden="true">y</span><span aria-hidden="true">c</span><span aria-hidden="true">o</span></span>-omics, thoughtfully connected.</h1>
+        <p class="hero-description">{{ $data.hero.description }}</p>
+        <div class="hero-actions">
+          <a class="btn primary" href="{{ $data.hero.primary_cta.url }}">{{ $data.hero.primary_cta.text }}</a>
+          <a class="btn secondary" href="{{ $data.hero.secondary_cta.url }}" target="_blank" rel="noopener">{{ $data.hero.secondary_cta.text }} <span aria-hidden="true">↗</span></a>
+        </div>
       </div>
-      <div class="workflow-ribbon" aria-label="Glycoverse workflow">
-        <div class="workflow-step">
-          <span class="workflow-number">01</span>
-          <div><strong>Read</strong><span>Experimental data</span></div>
-        </div>
-        <span class="workflow-arrow" aria-hidden="true">→</span>
-        <div class="workflow-step">
-          <span class="workflow-number">02</span>
-          <div><strong>Understand</strong><span>Glycan structure</span></div>
-        </div>
-        <span class="workflow-arrow" aria-hidden="true">→</span>
-        <div class="workflow-step">
-          <span class="workflow-number">03</span>
-          <div><strong>Discover</strong><span>Biological meaning</span></div>
-        </div>
+      <div class="hero-video" id="video">
+        <video class="intro-video-player" controls playsinline preload="none" width="1920" height="1080" poster="{{ "videos/glycoverse-introduction.jpg" | relURL }}" aria-label="Glycoverse introduction video">
+          <source src="{{ "videos/glycoverse-introduction.mp4" | relURL }}" type="video/mp4">
+          Your browser does not support embedded video. <a href="{{ "videos/glycoverse-introduction.mp4" | relURL }}">Download the Glycoverse introduction</a>.
+        </video>
       </div>
     </div>
   </section>
@@ -130,19 +122,6 @@
         </div>
       </div>
       {{ end }}
-    </div>
-  </section>
-
-  <section class="intro-video" id="video" aria-labelledby="video-title">
-    <div class="container">
-      <div class="section-intro">
-        <p class="section-kicker">Watch the introduction</p>
-        <h2 id="video-title">Discover Glycoverse.</h2>
-      </div>
-      <video class="intro-video-player" controls playsinline preload="none" width="1920" height="1080" poster="{{ "videos/glycoverse-introduction.jpg" | relURL }}" aria-label="Glycoverse introduction video">
-        <source src="{{ "videos/glycoverse-introduction.mp4" | relURL }}" type="video/mp4">
-        Your browser does not support embedded video. <a href="{{ "videos/glycoverse-introduction.mp4" | relURL }}">Download the Glycoverse introduction</a>.
-      </video>
     </div>
   </section>
 {{ end }}
