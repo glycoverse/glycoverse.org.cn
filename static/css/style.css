@@ -582,6 +582,26 @@ button:focus-visible {
   text-decoration: underline;
 }
 
+.intro-video {
+  padding: 0 0 clamp(64px, 8vw, 128px);
+  scroll-margin-top: 80px;
+}
+
+.intro-video-player {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  background: #000;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow);
+}
+
+.intro-video-player:focus-visible {
+  outline: 3px solid rgba(0, 113, 227, 0.32);
+  outline-offset: 3px;
+}
+
 .site-footer {
   padding: 74px 0 32px;
   background: var(--surface);

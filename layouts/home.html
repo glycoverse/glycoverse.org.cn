@@ -132,4 +132,17 @@
       {{ end }}
     </div>
   </section>
+
+  <section class="intro-video" id="video" aria-labelledby="video-title">
+    <div class="container">
+      <div class="section-intro">
+        <p class="section-kicker">Watch the introduction</p>
+        <h2 id="video-title">Discover Glycoverse.</h2>
+      </div>
+      <video class="intro-video-player" controls playsinline preload="none" width="1920" height="1080" poster="{{ "videos/glycoverse-introduction.jpg" | relURL }}" aria-label="Glycoverse introduction video">
+        <source src="{{ "videos/glycoverse-introduction.mp4" | relURL }}" type="video/mp4">
+        Your browser does not support embedded video. <a href="{{ "videos/glycoverse-introduction.mp4" | relURL }}">Download the Glycoverse introduction</a>.
+      </video>
+    </div>
+  </section>
 {{ end }}
